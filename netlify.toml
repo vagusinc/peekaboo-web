@@ -1,7 +1,6 @@
 [build]
   command = "remix vite:build"
-  functions = "netlify/functions"
-  publish = "public"
+  publish = "build/server"
 
 [dev]
   command = "remix watch"
