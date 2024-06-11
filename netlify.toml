@@ -1,9 +1,9 @@
 [build]
-  command = "yarn build"
+  command = "remix vite:build"
   publish = "build/client"
 
 [dev]
-  command = "yarn dev"
+  command = "remix watch"
   port = 3000
   framework = "vite"
 
