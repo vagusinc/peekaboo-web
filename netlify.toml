@@ -1,10 +1,11 @@
 [build]
-  command = "remix vite:build"
-  publish = "build/server"
+  command = "yarn build"
+  publish = "build/client"
 
 [dev]
-  command = "remix watch"
+  command = "yarn dev"
   port = 3000
+  framework = "vite"
 
 [[redirects]]
   from = "/*"

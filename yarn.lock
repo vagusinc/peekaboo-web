@@ -1817,6 +1817,14 @@
     pump "^3.0.0"
     tar-fs "^2.1.1"
 
+"@netlify/remix-adapter@^2.4.0":
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/@netlify/remix-adapter/-/remix-adapter-2.4.0.tgz#70467d40cac83b7f7c016cc0e39821e0e5dd2fed"
+  integrity sha512-20AZ0klm3z/atMlf0iu/OlM3wHpCkW+s8hsvqkQxY/pU6ALDzKUt2PjSNA+s8FgOQ6QMmKgG+3HbCPoBQOXCUQ==
+  dependencies:
+    "@remix-run/node" "^2.9.2"
+    isbot "^5.0.0"
+
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz#7619c2eb21b25483f6d167548b4cfd5a7488c3d5"
@@ -6913,6 +6921,11 @@ isbot@^4.1.0:
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/isbot/-/isbot-4.4.0.tgz#897ce9f2e498de6181027660ca80de8734d1ef81"
   integrity sha512-8ZvOWUA68kyJO4hHJdWjyreq7TYNWTS9y15IzeqVdKxR9pPr3P/3r9AHcoIv9M0Rllkao5qWz2v1lmcyKIVCzQ==
+
+isbot@^5.0.0:
+  version "5.1.9"
+  resolved "https://registry.yarnpkg.com/isbot/-/isbot-5.1.9.tgz#4bba444c95abd7f8299764ee28b04ca592400d5a"
+  integrity sha512-NITFjA2Jpcv1qWCpzqZQoW/66H3xXbF+n4yJIXr/gIn/wgaSKOPXTTczswiKMYx+BVymG9lm30ZGPtFWqAD4hA==
 
 isexe@^2.0.0:
   version "2.0.0"
