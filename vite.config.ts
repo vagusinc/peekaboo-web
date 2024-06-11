@@ -1,5 +1,6 @@
 import { vitePlugin as remix } from "@remix-run/dev";
 import { defineConfig } from "vite";
+import path from "node:path"
 import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
@@ -13,4 +14,9 @@ export default defineConfig({
     }),
     tsconfigPaths(),
   ],
+  resolve: {
+    alias: {
+      "~/": path.join(__dirname, "app/")
+    },
+  },
 });
