@@ -1,17 +1,11 @@
 [build]
   command = "remix vite:build"
-  functions = "netlify/functions"
   publish = "build/client"
 
 [dev]
   command = "remix watch"
   port = 3000
   framework = "vite"
-
-[[redirects]]
-  from = "/*"
-  to = "/.netlify/functions/server"
-  status = 200
 
 [[headers]]
   for = "/build/*"
