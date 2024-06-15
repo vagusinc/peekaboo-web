@@ -12,6 +12,10 @@ body {
   @apply border border-gray-400 text-black rounded-md p-2 text-sm;
 }
 
+.centered-div {
+  @apply flex justify-center items-center
+}
+
 .div-flex-col {
   @apply flex flex-col;
 }

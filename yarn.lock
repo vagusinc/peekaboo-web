@@ -3015,10 +3015,27 @@
     "@supabase/realtime-js" "2.9.5"
     "@supabase/storage-js" "2.5.5"
 
+"@tanstack/form-core@0.21.0":
+  version "0.21.0"
+  resolved "https://registry.yarnpkg.com/@tanstack/form-core/-/form-core-0.21.0.tgz#ef5a9d465273174867de1080674145c0a1c3218a"
+  integrity sha512-ZhiG74PSZ5ECZXcidD7iEabQTMr8YtEdshGB3ai3ZXsjIHUF185sWyHc1N6VyccUaLJ6/IiNbUdjTMhZWjdRyg==
+  dependencies:
+    "@tanstack/store" "^0.3.1"
+
 "@tanstack/query-core@5.40.0":
   version "5.40.0"
   resolved "https://registry.yarnpkg.com/@tanstack/query-core/-/query-core-5.40.0.tgz#c74ae8303752ed4b5a0ab848ec71a0e6e8179f83"
   integrity sha512-eD8K8jsOIq0Z5u/QbvOmfvKKE/XC39jA7yv4hgpl/1SRiU+J8QCIwgM/mEHuunQsL87dcvnHqSVLmf9pD4CiaA==
+
+"@tanstack/react-form@^0.21.0":
+  version "0.21.0"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-form/-/react-form-0.21.0.tgz#f8a9730133f4f1aa7fcb3c6dbd10e20a813b44e8"
+  integrity sha512-+HEMLYav98SBawDK7XfczmODUxDLii7Bo9DGgjCCYO+IUaPMRfto/VLcwFJB/0H1us8sShdbV/IdVJa3VU+LaQ==
+  dependencies:
+    "@tanstack/form-core" "0.21.0"
+    "@tanstack/react-store" "^0.3.1"
+    decode-formdata "^0.4.0"
+    rehackt "^0.0.3"
 
 "@tanstack/react-query@^5.40.1":
   version "5.40.1"
@@ -3026,6 +3043,19 @@
   integrity sha512-gOcmu+gpFd2taHrrgMM9RemLYYEDYfsCqszxCC0xtx+csDa4R8t7Hr7SfWXQP13S2sF+mOxySo/+FNXJFYBqcA==
   dependencies:
     "@tanstack/query-core" "5.40.0"
+
+"@tanstack/react-store@^0.3.1":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-store/-/react-store-0.3.1.tgz#f93896da40f91b4385aca9448d3ccf914b314b50"
+  integrity sha512-PfV271d345It6FdcX4c9gd+llKGddtvau8iJnybTAWmYVyDeFWfIIkiAJ5iNITJmI02AzqgtcV3QLNBBlpBUjA==
+  dependencies:
+    "@tanstack/store" "0.3.1"
+    use-sync-external-store "^1.2.0"
+
+"@tanstack/store@0.3.1", "@tanstack/store@^0.3.1":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@tanstack/store/-/store-0.3.1.tgz#317bfb7eedd8cc4ee32c4e52740abbf1bd311d36"
+  integrity sha512-A49KN8SpLMWaNmZGPa9K982RQ81W+m7W6iStcQVeKeVS70JZRqkF0fDwKByREPq6qz9/kS0aQFOPQ0W6wIeU5g==
 
 "@testing-library/dom@^9.3.4":
   version "9.3.4"
@@ -4885,6 +4915,11 @@ decimal.js@^10.4.2:
   version "10.4.3"
   resolved "https://registry.yarnpkg.com/decimal.js/-/decimal.js-10.4.3.tgz#1044092884d245d1b7f65725fa4ad4c6f781cc23"
   integrity sha512-VBBaLc1MgL5XpzgIP7ny5Z6Nx3UrRkIViUkPUdtl9aya5amy3De1gsUUSB1g3+3sExYNjCAsAznmukyxCb1GRA==
+
+decode-formdata@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/decode-formdata/-/decode-formdata-0.4.0.tgz#485715a37417868435a92d2144b39646fe654aae"
+  integrity sha512-/OMUlsRLrSgHPOWCwembsFFTT4DY7Ts9GGlwK8v9yeLOyYZSPKIfn/1oOuV9UmpQ9CZi5JeyT8edunRoBOOl5g==
 
 decode-named-character-reference@^1.0.0:
   version "1.0.2"
@@ -9645,6 +9680,11 @@ regjsparser@^0.9.1:
   dependencies:
     jsesc "~0.5.0"
 
+rehackt@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/rehackt/-/rehackt-0.0.3.tgz#1ea454620d4641db8342e2db44595cf0e7ac6aa0"
+  integrity sha512-aBRHudKhOWwsTvCbSoinzq+Lej/7R8e8UoPvLZo5HirZIIBLGAgdG7SL9QpdcBoQ7+3QYPi3lRLknAzXBlhZ7g==
+
 rehype-external-links@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/rehype-external-links/-/rehype-external-links-3.0.0.tgz#2b28b5cda1932f83f045b6f80a3e1b15f168c6f6"
@@ -11012,6 +11052,11 @@ use-sync-external-store@1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/use-sync-external-store/-/use-sync-external-store-1.2.0.tgz#7dbefd6ef3fe4e767a0cf5d7287aacfb5846928a"
   integrity sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==
+
+use-sync-external-store@^1.2.0:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/use-sync-external-store/-/use-sync-external-store-1.2.2.tgz#c3b6390f3a30eba13200d2302dcdf1e7b57b2ef9"
+  integrity sha512-PElTlVMwpblvbNqQ82d2n6RjStvdSoNe9FG28kNfz3WiXilJm4DdNkEzRhCZuIDwY8U08WVihhGR5iRqAwfDiw==
 
 util-deprecate@^1.0.1, util-deprecate@^1.0.2, util-deprecate@~1.0.1:
   version "1.0.2"
