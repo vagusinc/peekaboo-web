@@ -1,20 +1,15 @@
 import { Form } from "@remix-run/react";
-import { useForm } from "@tanstack/react-form";
 import { Input } from "stories/Input";
+import { useDetailsOnboardingForm } from "../../hooks/useDetailsOnboardingForm";
 
 export function OnboardingForm1() {
-  const form = useForm({
-    defaultValues: {
-      schoolName: "",
-      schoolDescription: "",
-      contactNumber: "",
-      emailAddress: "",
-      websiteLink: "",
-      socialMediaLink: "",
-    },
-    onSubmit: ({ value }) => {
-      console.log(value.schoolName, value.schoolDescription, value.contactNumber, value.emailAddress, value.websiteLink, value.socialMediaLink);
-    },
+  const form = useDetailsOnboardingForm({
+    schoolName: "",
+    schoolDescription: "",
+    contactNumber: "",
+    emailAddress: "",
+    websiteLink: "",
+    socialMediaLink: "",
   });
 
   return (
@@ -31,8 +26,7 @@ export function OnboardingForm1() {
             e.stopPropagation();
           }}
         >
-          <form.Field
-            name="schoolName">
+          <form.Field name="schoolName">
             {(field) => (
               <div className="div-flex-col mb-3">
                 <label htmlFor="school-name"> School name </label>
