@@ -1,6 +1,12 @@
 import { mapboxClient } from "~/config/.client/mapboxClient";
 import { Feature } from "./types";
 
+/**
+ * Forward search can be refined with more parameters added on the query params.
+ * For now, only the required location string is needed.
+ * If more parameters are needed, please discuss with the lead and
+ * create a type for the accepted arguments for the function.
+ */
 export const forwardSearch = async (
   locationString: string
 ): Promise<{
