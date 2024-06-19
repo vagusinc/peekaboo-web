@@ -13,3 +13,10 @@ export const forwardSearch = async (
   const response = await mapboxClient.get(url);
   return response.data;
 };
+
+export const reverseGeocoding = async (long: string, lat: string) => {
+  const url = `/search/geocode/v6/reverse?longitude=${long}&latitude=${lat}`;
+
+  const response = await mapboxClient.get(url);
+  return response.data;
+};
