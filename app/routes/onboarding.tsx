@@ -1,9 +1,9 @@
-import { OnboardingForm } from "~/features/school/components";
+import { OnboardingSlider } from "~/features/school/components";
 
 export default function Index() {
   return (
     <div>
-      <OnboardingForm />
+      <OnboardingSlider />
     </div>
   );
 }

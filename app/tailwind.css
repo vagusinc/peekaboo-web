@@ -1,3 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  @apply font-poppins;
+}
+
+.custom-input {
+  @apply border border-gray-400 text-black rounded-md p-2 text-sm;
+}
+
+.centered-div {
+  @apply flex justify-center items-center
+}
+
+.div-flex-col {
+  @apply flex flex-col;
+}
+
+.div-flex-row {
+  @apply flex flex-row;
+}
