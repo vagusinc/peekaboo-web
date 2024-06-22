@@ -2,7 +2,7 @@ import { useState } from "react"
 import { OnboardingForm1 } from "./OnboardingForm1";
 import { OnboardingForm2 } from "./OnboardingForm2";
 import { OnboardingForm3 } from "./OnboardingForm3";
-import { Footer } from "./Footer";
+import { Footer } from "./ActionBar";
 
 export const OnboardingSlider: React.FC = () => {
   const [currentStep, setCurrentStep] = useState<number>(1);
@@ -33,7 +33,7 @@ export const OnboardingSlider: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col h-svh">
+    <div className="flex flex-col h-lvh">
       <div className="flex-grow">
         {renderForm()}
       </div>

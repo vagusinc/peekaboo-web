@@ -1,6 +1,6 @@
 import { useForm } from "@tanstack/react-form";
 
-interface OnboardingFormValues {
+interface DetailsFormValues {
   schoolName: string;
   schoolDescription: string;
   contactNumber: string;
@@ -9,7 +9,7 @@ interface OnboardingFormValues {
   socialMediaLink: string;
 }
 
-export function useDetailsOnboardingForm(defaultValues: OnboardingFormValues) {
+export function useDetailsForm(defaultValues: DetailsFormValues) {
   return useForm({
     defaultValues,
     onSubmit: ({ value }) => {
