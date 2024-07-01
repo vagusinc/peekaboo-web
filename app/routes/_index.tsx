@@ -1,5 +1,8 @@
 import type { MetaFunction } from "@remix-run/node";
-import { Link } from "@remix-run/react";
+
+import { LoginForm } from "~/features/auth/components";
+import { Typography } from "~/shared/components/base";
+import { TextLogo } from "~/shared/components/icons";
 
 export const meta: MetaFunction = () => {
   return [
@@ -10,14 +13,17 @@ export const meta: MetaFunction = () => {
 
 export default function Index() {
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-      }}
-    >
-      Home Page
-      <Link to="onboarding">Link to Onboarding page</Link>
+    <div className="h-full flex flex-col items-center justify-center">
+      <div className="w-[40vw] max-w-sm mb-20">
+        <div className="flex justify-center mb-16">
+          <TextLogo />
+        </div>
+        <div className="mb-8">
+          <Typography variant="H3">Login</Typography>
+          <Typography>enter your login details</Typography>
+        </div>
+        <LoginForm />
+      </div>
     </div>
   );
 }
