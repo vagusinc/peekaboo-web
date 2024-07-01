@@ -1,6 +1,6 @@
 import { vitePlugin as remix } from "@remix-run/dev";
 import { defineConfig } from "vite";
-import path from "node:path"
+import path from "node:path";
 import tsconfigPaths from "vite-tsconfig-paths";
 import { netlifyPlugin } from "@netlify/remix-adapter/plugin";
 
@@ -18,7 +18,9 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      "~/": path.join(__dirname, "app/")
+      "~/": path.join(__dirname, "app/"),
+      "~/shared-components": path.join(__dirname, "app/shared/components"),
+      "~/feature-auth": path.join(__dirname, "app/features/auth"),
     },
   },
 });
