@@ -49,7 +49,7 @@ export function OnboardingForm3() {
             e.stopPropagation();
           }}
         >
-          <div className="centered-div flex-col h-3/5 w-full border-2 border-dashed">
+          <div className="centered-div flex-col h-3/5 w-full border-2 border-dashed">        
             <Input
               className="hidden"
               id="logo-upload"

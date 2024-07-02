@@ -1,6 +1,8 @@
 import { Input } from "../base";
 
 interface FormFieldProps {
+  classNameLabel?: string;
+  classNameInput?: string;
   value?: string;
   name?: string;
   label?: string;
@@ -12,6 +14,8 @@ interface FormFieldProps {
 }
 
 const FormField = ({
+  classNameLabel,
+  classNameInput,
   value,
   name,
   label,
@@ -22,13 +26,18 @@ const FormField = ({
   onBlur,
 }: FormFieldProps) => {
   return (
-    <div className="flex flex-col gap-1.5">
-      <label htmlFor={name} className="font-semibold text-xl text-black">
-        {label}
+    <div className={"flex flex-col gap-1.5"}>
+      <label htmlFor={name} className= { classNameLabel || "font-semibold text-xl text-black" }>
+      {label && (
+          <>
+            {label.split('*')[0]}
+            {label.includes('*') && <span className="text-red">*</span>}
+          </>
+        )}
       </label>
       <Input
         className={
-          errorMessage ? "border-red text-red focus-visible:border-red" : ""
+          errorMessage ? "border-red text-red focus-visible:border-red" : "" || classNameInput
         }
         name={name}
         placeholder={placeholder || ""}

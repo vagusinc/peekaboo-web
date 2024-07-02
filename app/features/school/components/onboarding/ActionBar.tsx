@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "~/shared/components/base"
 
 interface ActionBarProps {
   onContinue: () => void;
@@ -14,15 +15,15 @@ export const Footer: React.FC<ActionBarProps> = ({ onContinue, onBack, currentSt
         <div className="div-flex-row h-full items-center justify-between py-5 px-10">
           <p className="text-sm">Cancel</p>
           <div className="justify-between div-flex-row items-center w-52">
-            <button className="text-sm cursor-pointer" onClick={onBack} style={{ visibility: currentStep === 1 ? 'hidden' : 'visible' }}>
+            <Button variant={"ghost"} className="text-sm cursor-pointer" onClick={onBack} style={{ visibility: currentStep === 1 ? 'hidden' : 'visible' }}>
               Back
-            </button>
-            <button
-              className="justify-center bg-blue-500 rounded-md text-white border py-2 px-8"
+            </Button>
+            <Button
+              className="justify-center bg-blue rounded-md text-white border py-2 px-8"
               onClick={onContinue}
             >
               Continue
-            </button>
+            </Button>
           </div>
         </div>
       </div>

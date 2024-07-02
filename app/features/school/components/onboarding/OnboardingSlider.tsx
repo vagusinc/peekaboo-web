@@ -1,7 +1,7 @@
 import { useState } from "react"
-import { OnboardingForm1 } from "./OnboardingForm1";
-import { OnboardingForm2 } from "./OnboardingForm2";
-import { OnboardingForm3 } from "./OnboardingForm3";
+import { OnboardingForm1 } from "./school-information-form/SchoolInformationForm";
+import { OnboardingForm2 } from "./school-address-form/SchoolAddressForm";
+import { OnboardingForm3 } from "./school-logo-form/SchoolLogoForm";
 import { Footer } from "./ActionBar";
 
 export const OnboardingSlider: React.FC = () => {

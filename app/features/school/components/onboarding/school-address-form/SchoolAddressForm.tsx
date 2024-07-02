@@ -2,7 +2,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import mapboxgl from "mapbox-gl";
 import { Form } from "@remix-run/react";
 import { useEffect, useRef } from 'react';
-import { useAddressForm } from "../../hooks/useAddressForm";
+import { useAddressForm } from "./hooks/useSchoolAddressForm";
 import { Input } from "stories/Input";
 
 export function OnboardingForm2() {
@@ -15,8 +15,8 @@ export function OnboardingForm2() {
       const map = new mapboxgl.Map({
         container: mapContainerRef.current,
         style: 'mapbox://styles/mapbox/standard',
-        center: [123.945, 10.293],
-        zoom: 13,
+        center: [123.8886, 10.3079],
+        zoom: 12,
         accessToken: TOKEN
       });
 
