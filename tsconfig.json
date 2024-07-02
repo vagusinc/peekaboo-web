@@ -23,7 +23,9 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
-      "~/*": ["./app/*"]
+      "~/*": ["./app/*"],
+      "~/shared-components": ["./app/shared/components/*"],
+      "~/feature-auth": ["./app/features/auth/*"]
     },
 
     // Vite takes care of building everything, not tsc.

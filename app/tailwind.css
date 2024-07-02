@@ -4,8 +4,15 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply font-poppins;
+@layer base {
+  html {
+    font-family: "Poppins", system-ui, sans-serif;
+    height: 100%;
+  }
+
+  body {
+    height: 100%;
+  }
 }
 
 .custom-input {
