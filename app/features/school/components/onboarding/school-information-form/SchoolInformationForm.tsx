@@ -27,7 +27,7 @@ export function OnboardingForm1() {
                 <div className="div-flex-col mb-3">
 
                   <FormField
-                    label="School Name"
+                    label="School Name*"
                     classNameLabel="text-md"
                     name={field.name}
                     value={field.state.value}
@@ -51,7 +51,7 @@ export function OnboardingForm1() {
               {(field) => (
                 <div className="div-flex-col mb-3">
                   <TextAreaField
-                    label="School description"
+                    label="School description*"
                     classNameLabel="text-md"
                     name={field.name}
                     value={field.state.value}
@@ -69,7 +69,7 @@ export function OnboardingForm1() {
                 {(field) => (
                   <div className="div-flex-col w-6/12">
                     <FormField
-                      label="Website *"
+                      label="Website"
                       classNameLabel="text-md"
                       name={field.name}
                       value={field.state.value}
@@ -92,7 +92,7 @@ export function OnboardingForm1() {
                 {(field) => (
                   <div className="div-flex-col w-6/12">
                     <FormField
-                      label="Email address"
+                      label="Email address*"
                       classNameLabel="text-md"
                       name={field.name}
                       value={field.state.value}
@@ -116,7 +116,7 @@ export function OnboardingForm1() {
                 {(field) => (
                   <div className="div-flex-col w-6/12">
                     <FormField
-                      label="Contact number"
+                      label="Contact number*"
                       classNameLabel="text-md"
                       name={field.name}
                       value={field.state.value}
@@ -132,7 +132,7 @@ export function OnboardingForm1() {
                 {(field) => (
                   <div className="div-flex-col w-6/12">
                     <FormField
-                      label="Social media link *"
+                      label="Social media link"
                       classNameLabel="text-md"
                       name={field.name}
                       value={field.state.value}

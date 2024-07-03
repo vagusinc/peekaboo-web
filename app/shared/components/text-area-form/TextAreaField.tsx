@@ -26,7 +26,12 @@ const TextAreaField = ({
   return (
     <div className="flex flex-col gap-1.5">
       <label htmlFor={name} className={classNameLabel || "text-black"}>
-        {label}
+      {label && (
+          <>
+            {label.split('*')[0]}
+            {label.includes('*') && <span className="text-red">*</span>}
+          </>
+        )}
       </label>
       <Textarea
         className={`custom-textarea ${errorMessage ? 'border-red text-red focus-visible:border-red' : ''}`}
