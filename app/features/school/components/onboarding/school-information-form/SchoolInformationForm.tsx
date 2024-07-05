@@ -1,8 +1,9 @@
 import { z } from "zod";
 import { useSchoolInformationForm } from "./hooks/useSchoolInformationForm";
 import { FormField, TextAreaField } from "~/shared/components/";
+import DynamicInputFields from "./DynamicInputFields";
 
-export function OnboardingForm1() {
+export function SchoolInformationForm() {
   const { form, handleSubmit } = useSchoolInformationForm();
 
   return (
@@ -65,16 +66,21 @@ export function OnboardingForm1() {
 
             <div className="div-flex-row space-x-5 mb-3">
               <form.Field
-                name="websiteLink">
+                name="websiteLinks"
+                validators={{
+                  onSubmit: z
+                    .array(z.string()
+                      .url("Invalid URL"))
+                }}
+              >
                 {(field) => (
                   <div className="div-flex-col w-6/12">
-                    <FormField
-                      label="Website"
-                      classNameLabel="text-md"
+                    <DynamicInputFields
                       name={field.name}
-                      value={field.state.value}
+                      label="Website"
                       placeholder={"enter website link"}
-                      onChange={(e) => field.handleChange(e.target.value)}
+                      value={field.state.value}
+                      onChange={(values) => field.handleChange(values)}
                     />
                   </div>
                 )}
@@ -109,10 +115,10 @@ export function OnboardingForm1() {
                 name="contactNumber"
                 validators={{
                   onSubmit: z.string()
-                  .min(1, { message: "Contact number is required" })
-                  .regex(/^\d{11}$/, { message: "Contact number must be 11 digits long" }),
+                    .min(1, { message: "Contact number is required" })
+                    .regex(/^\d{11}$/, { message: "Contact number must be 11 digits long" }),
                 }}
-                >
+              >
                 {(field) => (
                   <div className="div-flex-col w-6/12">
                     <FormField
@@ -128,25 +134,29 @@ export function OnboardingForm1() {
               </form.Field>
 
               <form.Field
-                name="socialMediaLink">
+                name="socialMediaLinks"
+                validators={{
+                  onSubmit: z
+                    .array(z.string()
+                      .url("Invalid URL"))
+                }}
+              >
                 {(field) => (
                   <div className="div-flex-col w-6/12">
-                    <FormField
-                      label="Social media link"
-                      classNameLabel="text-md"
+                    <DynamicInputFields
                       name={field.name}
+                      label="Social Media"
+                      placeholder={"enter social media links"}
                       value={field.state.value}
-                      placeholder={"enter social media link"}
-                      onChange={(e) => field.handleChange(e.target.value)}
-                    /> 
+                      onChange={(values) => field.handleChange(values)}
+                    />
                   </div>
                 )}
               </form.Field>
             </div>
-
           </form>
-        </div>
 
+        </div>
       </div>
     </div>
   );

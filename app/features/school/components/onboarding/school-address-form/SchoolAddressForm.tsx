@@ -5,7 +5,7 @@ import { useEffect, useRef } from 'react';
 import { useAddressForm } from "./hooks/useSchoolAddressForm";
 import { Input } from "stories/Input";
 
-export function OnboardingForm2() {
+export function SchoolAddressForm() {
   const TOKEN = window.ENV.MAPBOX_ACCESS_TOKEN;
 
   const mapContainerRef = useRef(null);
@@ -43,34 +43,34 @@ export function OnboardingForm2() {
         </div>
 
         <div className="w-5/12">
-        <div className="w-full h-fit mt-5">
+          <div className="w-full h-fit mt-5">
 
-          <Form
-            className="h-full w-full"
-            onSubmit={e => {
-              e.preventDefault();
-              e.stopPropagation();
-            }}
-          >
-            <form.Field name="address">
-              {(field) => (
-                <div className="div-flex-col mb-3">
-                  <label htmlFor="address"> Address </label>
-                  <Input
-                    className="custom-input mt-1.5 cursor-default"
-                    id="address"
-                    placeholder="Click on the map to display your address here"
-                    type="text"
-                    value={field.state.value}
-                    onChange={(e) => field.handleChange(e.target.value)}
-                    readOnly
-                  />
-                </div>
-              )}
-            </form.Field>
-          </Form>
+            <Form
+              className="h-full w-full"
+              onSubmit={e => {
+                e.preventDefault();
+                e.stopPropagation();
+              }}
+            >
+              <form.Field name="address">
+                {(field) => (
+                  <div className="div-flex-col mb-3">
+                    <label htmlFor="address"> Address </label>
+                    <Input
+                      className="custom-input mt-1.5 cursor-default"
+                      id="address"
+                      placeholder="Click on the map to display your address here"
+                      type="text"
+                      value={field.state.value}
+                      onChange={(e) => field.handleChange(e.target.value)}
+                      readOnly
+                    />
+                  </div>
+                )}
+              </form.Field>
+            </Form>
 
-        </div>
+          </div>
         </div>
       </div>
 

@@ -2,7 +2,7 @@ import { Form } from "@remix-run/react";
 import { Input } from "stories/Input";
 import { useState } from "react";
 
-export function OnboardingForm3() {
+export function SchoolLogoForm() {
   const [file, setFile] = useState<File | undefined>();
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);

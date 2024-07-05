@@ -1,8 +1,8 @@
 import { useState } from "react"
-import { OnboardingForm1 } from "./school-information-form/SchoolInformationForm";
-import { OnboardingForm2 } from "./school-address-form/SchoolAddressForm";
-import { OnboardingForm3 } from "./school-logo-form/SchoolLogoForm";
 import { Footer } from "./ActionBar";
+import { SchoolInformationForm } from "./school-information-form";
+import { SchoolAddressForm } from "./school-address-form";
+import { SchoolLogoForm } from "./school-logo-form";
 
 export const OnboardingSlider: React.FC = () => {
   const [currentStep, setCurrentStep] = useState<number>(1);
@@ -22,11 +22,11 @@ export const OnboardingSlider: React.FC = () => {
   const renderForm = () => {
     switch (currentStep) {
       case 1:
-        return <OnboardingForm1 />;
+        return <SchoolInformationForm />;
       case 2:
-        return <OnboardingForm2 />;
+        return <SchoolAddressForm />;
       case 3:
-        return <OnboardingForm3 />;
+        return <SchoolLogoForm />;
       default:
         return null;
     }

@@ -6,8 +6,8 @@ const defaultValues = {
   schoolDescription: "",
   contactNumber: "",
   emailAddress: "",
-  websiteLink: "",
-  socialMediaLink: "",
+  websiteLinks: [""],
+  socialMediaLinks: [""],
 };
 
 const useSchoolInformationForm = () => {
