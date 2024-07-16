@@ -2,9 +2,15 @@ import { z } from "zod";
 import { useSchoolInformationForm } from "./hooks/useSchoolInformationForm";
 import { FormField, TextAreaField } from "~/shared/components/";
 import DynamicInputFields from "./DynamicInputFields";
+import { useState } from "react";
 
 export function SchoolInformationForm() {
   const { form, handleSubmit } = useSchoolInformationForm();
+  const [websiteLinks, setWebsiteLinks] = useState<string[]>([]);
+
+  const handleWebsiteLinksChange = (values: string[]) => {
+    setWebsiteLinks(values);
+  };
 
   return (
     <div className="div-flex-col items-center h-full">
@@ -26,7 +32,6 @@ export function SchoolInformationForm() {
             >
               {(field) => (
                 <div className="div-flex-col mb-3">
-
                   <FormField
                     label="School Name*"
                     classNameLabel="text-md"
@@ -36,7 +41,6 @@ export function SchoolInformationForm() {
                     onChange={(e) => field.handleChange(e.target.value)}
                     errorMessage={field.state.meta.errors.join(", ")}
                   />
-
                 </div>
               )}
             </form.Field>
@@ -80,11 +84,14 @@ export function SchoolInformationForm() {
                       label="Website"
                       placeholder={"enter website link"}
                       value={field.state.value}
-                      onChange={(values) => field.handleChange(values)}
+                      onChange={handleWebsiteLinksChange}
                     />
                   </div>
                 )}
               </form.Field>
+
+              {/** For testing purposes only **/}
+              <pre>{JSON.stringify(websiteLinks, null, 2)}</pre> 
 
               <form.Field
                 name="emailAddress"
