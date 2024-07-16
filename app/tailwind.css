@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css');
+
 
 @tailwind base;
 @tailwind components;
@@ -29,4 +31,16 @@
 
 .div-flex-row {
   @apply flex flex-row;
+}
+
+.ProseMirror:focus {
+  outline: none;
+}
+
+.Prose [data-placeholder]:before {
+  content: attr(data-placeholder);
+  float: left;
+  color: #6d6d6d;
+  pointer-events: none;
+  height: 0;
 }

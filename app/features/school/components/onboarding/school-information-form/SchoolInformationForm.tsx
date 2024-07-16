@@ -1,15 +1,20 @@
 import { z } from "zod";
 import { useSchoolInformationForm } from "./hooks/useSchoolInformationForm";
-import { FormField, TextAreaField } from "~/shared/components/";
+import { FormField, RichTextEditor } from "~/shared/components/";
 import DynamicInputFields from "./DynamicInputFields";
 import { useState } from "react";
 
 export function SchoolInformationForm() {
   const { form, handleSubmit } = useSchoolInformationForm();
   const [websiteLinks, setWebsiteLinks] = useState<string[]>([]);
+  const [editorContent, setEditorContent] = useState('');
 
   const handleWebsiteLinksChange = (values: string[]) => {
     setWebsiteLinks(values);
+  };
+
+  const handleEditorChange = (content: string) => {
+    setEditorContent(content);
   };
 
   return (
@@ -53,16 +58,14 @@ export function SchoolInformationForm() {
                   .min(1, { message: "School description is required " })
               }}
             >
-              {(field) => (
+              {() => (
                 <div className="div-flex-col mb-3">
-                  <TextAreaField
-                    label="School description*"
-                    classNameLabel="text-md"
-                    name={field.name}
-                    value={field.state.value}
-                    placeholder={"enter school description"}
-                    onChange={(e) => field.handleChange(e.target.value)}
-                    errorMessage={field.state.meta.errors.join(", ")}
+                  <RichTextEditor
+                    label="Description*"
+                    name="description"
+                    placeholder="What's your school about?"
+                    value={editorContent}
+                    onChange={handleEditorChange}
                   />
                 </div>
               )}
@@ -91,7 +94,7 @@ export function SchoolInformationForm() {
               </form.Field>
 
               {/** For testing purposes only **/}
-              <pre>{JSON.stringify(websiteLinks, null, 2)}</pre> 
+              <pre>{JSON.stringify(websiteLinks, null, 2)}</pre>
 
               <form.Field
                 name="emailAddress"
