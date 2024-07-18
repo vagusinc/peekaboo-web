@@ -1,8 +1,9 @@
-import React from 'react';
-import { useDynamicInputFields } from './hooks/useDynamicInputFields';
-import { Button, Input } from '~/shared/components/base';
+import React, { useEffect, useRef } from "react";
+import { useDynamicInputFields } from "./hooks/useDynamicInputFields";
+import { Button, Input } from "~/shared/components/base";
 
 interface DynamicInputFieldsProps {
+  classNameLabel?: string;
   name: string;
   label: string;
   placeholder?: string;
@@ -11,13 +12,16 @@ interface DynamicInputFieldsProps {
 }
 
 const DynamicInputFields: React.FC<DynamicInputFieldsProps> = ({
+  classNameLabel,
   name,
   label,
   placeholder,
-  value = [''],
+  value = [""],
   onChange,
 }) => {
-  const { values, handleChange, handleAddField, handleRemoveField } = useDynamicInputFields(value);
+  const { values, handleChange, handleAddField, handleRemoveField } =
+    useDynamicInputFields(value);
+  const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
   const handleFieldChange = (index: number, newValue: string) => {
     handleChange(index, newValue);
@@ -34,17 +38,42 @@ const DynamicInputFields: React.FC<DynamicInputFieldsProps> = ({
     onChange(values);
   };
 
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      handleAddClick();
+    }
+  };
+
+  useEffect(() => {
+    if (inputRefs.current[values.length - 1]) {
+      inputRefs.current[values.length - 1]?.focus();
+    }
+  }, [values.length]);
+
   return (
     <div className="flex flex-col gap-3">
-      <label className="text-md">{label}</label>
+      <label
+        htmlFor={name}
+        className={classNameLabel || "font-semibold text-xl text-black"}
+      >
+        {label && (
+          <>
+            {label.split("*")[0]}
+            {label.includes("*") && <span className="text-red">*</span>}
+          </>
+        )}
+      </label>
       {values.map((value, index) => (
         <div key={index} className="flex items-center gap-2">
           <Input
+            ref={(el) => (inputRefs.current[index] = el)}
             type="text"
             name={`${name}[${index}]`}
             placeholder={placeholder}
             value={value}
             onChange={(e) => handleFieldChange(index, e.target.value)}
+            onKeyPress={handleKeyPress} // Add key press handler
             className="custom-input"
           />
           {index > 0 && (

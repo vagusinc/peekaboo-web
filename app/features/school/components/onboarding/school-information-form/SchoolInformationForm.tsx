@@ -6,10 +6,20 @@ import { useState } from "react";
 
 export function SchoolInformationForm() {
   const { form, handleSubmit } = useSchoolInformationForm();
-  const [websiteLinks, setWebsiteLinks] = useState<string[]>([]);
+  const [contactNumber, setContactNumber] = useState<string[]>([]);
+  const [socialMediaLinks, setSocialMediaLinks] = useState<string[]>([]);
+  const [editorContent, setEditorContent] = useState("");
 
-  const handleWebsiteLinksChange = (values: string[]) => {
-    setWebsiteLinks(values);
+  const handleSocialMediaLinksChange = (values: string[]) => {
+    setSocialMediaLinks(values);
+  };
+
+  const handleContactNumberChange = (values: string[]) => {
+    setContactNumber(values);
+  };
+
+  const handleEditorChange = (content: string) => {
+    setEditorContent(content);
   };
 
   return (
@@ -20,7 +30,6 @@ export function SchoolInformationForm() {
         </h1>
 
         <div className="h-5/6 centered-div">
-
           <form className="div-flex-col h-fit w-full" onSubmit={handleSubmit}>
             <form.Field
               name="schoolName"
@@ -50,7 +59,7 @@ export function SchoolInformationForm() {
               validators={{
                 onSubmit: z
                   .string()
-                  .min(1, { message: "School description is required " })
+                  .min(1, { message: "School description is required " }),
               }}
             >
               {(field) => (
@@ -72,26 +81,22 @@ export function SchoolInformationForm() {
               <form.Field
                 name="websiteLinks"
                 validators={{
-                  onSubmit: z
-                    .array(z.string()
-                      .url("Invalid URL"))
+                  onSubmit: z.array(z.string().url("Invalid URL")),
                 }}
               >
                 {(field) => (
                   <div className="div-flex-col w-6/12">
-                    <DynamicInputFields
+                    <FormField
+                      label="Website links"
+                      classNameLabel="text-md"
                       name={field.name}
-                      label="Website"
-                      placeholder={"enter website link"}
                       value={field.state.value}
-                      onChange={handleWebsiteLinksChange}
+                      placeholder={"enter website link"}
+                      onChange={(e) => field.handleChange(e.target.value)}
                     />
                   </div>
                 )}
               </form.Field>
-
-              {/** For testing purposes only **/}
-              <pre>{JSON.stringify(websiteLinks, null, 2)}</pre> 
 
               <form.Field
                 name="emailAddress"
@@ -121,20 +126,26 @@ export function SchoolInformationForm() {
               <form.Field
                 name="contactNumber"
                 validators={{
-                  onSubmit: z.string()
+                  onSubmit: z
+                    .string()
                     .min(1, { message: "Contact number is required" })
-                    .regex(/^\d{11}$/, { message: "Contact number must be 11 digits long" }),
+                    .regex(/^\d{11}$/, {
+                      message: "Contact number must be 11 digits long",
+                    }),
                 }}
               >
                 {(field) => (
                   <div className="div-flex-col w-6/12">
-                    <FormField
-                      label="Contact number*"
-                      classNameLabel="text-md"
+                    <DynamicInputFields
                       name={field.name}
-                      value={field.state.value}
+                      label="Contact number*"
                       placeholder={"enter contact number"}
-                      onChange={(e) => field.handleChange(e.target.value)}
+                      classNameLabel="text-md"
+                      value={field.state.value}
+                      onChange={(values) => {
+                        field.handleChange(values);
+                        handleContactNumberChange(values);
+                      }}
                     />
                   </div>
                 )}
@@ -143,29 +154,34 @@ export function SchoolInformationForm() {
               <form.Field
                 name="socialMediaLinks"
                 validators={{
-                  onSubmit: z
-                    .array(z.string()
-                      .url("Invalid URL"))
+                  onSubmit: z.array(z.string().url("Invalid URL")),
                 }}
               >
                 {(field) => (
                   <div className="div-flex-col w-6/12">
                     <DynamicInputFields
                       name={field.name}
-                      label="Social Media"
+                      label="Social media"
                       placeholder={"enter social media links"}
+                      classNameLabel="text-md"
                       value={field.state.value}
-                      onChange={(values) => field.handleChange(values)}
+                      onChange={(values) => {
+                        field.handleChange(values);
+                        handleSocialMediaLinksChange(values);
+                      }}
                     />
                   </div>
                 )}
               </form.Field>
             </div>
           </form>
-
         </div>
+      </div>
+      <div className="div-flex-row">
+        {/** For testing purposes only **/}
+        <pre>{JSON.stringify(contactNumber, null, 2)}</pre>
+        <pre>{JSON.stringify(socialMediaLinks, null, 2)}</pre>
       </div>
     </div>
   );
 }
-
