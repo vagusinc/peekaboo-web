@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import { useDynamicInputFields } from "./hooks/useDynamicInputFields";
 import { Button, Input } from "~/shared/components/base";
 
@@ -31,6 +31,12 @@ const DynamicInputFields: React.FC<DynamicInputFieldsProps> = ({
   const handleAddClick = () => {
     handleAddField();
     onChange(values);
+    setTimeout(() => {
+      const lastIndex = inputRefs.current.length - 1;
+      if (inputRefs.current[lastIndex]) {
+        inputRefs.current[lastIndex]?.focus();
+      }
+    }, 0);
   };
 
   const handleRemoveClick = (index: number) => {
@@ -44,12 +50,6 @@ const DynamicInputFields: React.FC<DynamicInputFieldsProps> = ({
       handleAddClick();
     }
   };
-
-  useEffect(() => {
-    if (inputRefs.current[values.length - 1]) {
-      inputRefs.current[values.length - 1]?.focus();
-    }
-  }, [values.length]);
 
   return (
     <div className="flex flex-col gap-3">
@@ -73,7 +73,7 @@ const DynamicInputFields: React.FC<DynamicInputFieldsProps> = ({
             placeholder={placeholder}
             value={value}
             onChange={(e) => handleFieldChange(index, e.target.value)}
-            onKeyPress={handleKeyPress} // Add key press handler
+            onKeyPress={handleKeyPress}
             className="custom-input"
           />
           {index > 0 && (
