@@ -8,7 +8,6 @@ export function SchoolInformationForm() {
   const { form, handleSubmit } = useSchoolInformationForm();
   const [contactNumber, setContactNumber] = useState<string[]>([]);
   const [socialMediaLinks, setSocialMediaLinks] = useState<string[]>([]);
-  const [editorContent, setEditorContent] = useState("");
 
   const handleSocialMediaLinksChange = (values: string[]) => {
     setSocialMediaLinks(values);
@@ -16,10 +15,6 @@ export function SchoolInformationForm() {
 
   const handleContactNumberChange = (values: string[]) => {
     setContactNumber(values);
-  };
-
-  const handleEditorChange = (content: string) => {
-    setEditorContent(content);
   };
 
   return (
@@ -138,9 +133,10 @@ export function SchoolInformationForm() {
                   <div className="div-flex-col w-6/12">
                     <DynamicInputFields
                       name={field.name}
-                      label="Contact number*"
+                      label="Contact number"
                       placeholder={"enter contact number"}
                       classNameLabel="text-md"
+                      type="number"
                       value={field.state.value}
                       onChange={(values) => {
                         field.handleChange(values);

@@ -8,6 +8,7 @@ interface DynamicInputFieldsProps {
   label: string;
   placeholder?: string;
   value?: string[];
+  type?: React.InputHTMLAttributes<HTMLInputElement>["type"];
   onChange: (values: string[]) => void;
 }
 
@@ -17,6 +18,7 @@ const DynamicInputFields: React.FC<DynamicInputFieldsProps> = ({
   label,
   placeholder,
   value = [""],
+  type,
   onChange,
 }) => {
   const { values, handleChange, handleAddField, handleRemoveField } =
@@ -24,8 +26,10 @@ const DynamicInputFields: React.FC<DynamicInputFieldsProps> = ({
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
   const handleFieldChange = (index: number, newValue: string) => {
+    const updatedValues = [...values];
+    updatedValues[index] = newValue;
     handleChange(index, newValue);
-    onChange(values);
+    onChange(updatedValues);
   };
 
   const handleAddClick = () => {
@@ -68,12 +72,12 @@ const DynamicInputFields: React.FC<DynamicInputFieldsProps> = ({
         <div key={index} className="flex items-center gap-2">
           <Input
             ref={(el) => (inputRefs.current[index] = el)}
-            type="text"
+            type={type || "text"}
             name={`${name}[${index}]`}
             placeholder={placeholder}
             value={value}
             onChange={(e) => handleFieldChange(index, e.target.value)}
-            onKeyPress={handleKeyPress}
+            onKeyUp={handleKeyPress}
             className="custom-input"
           />
           {index > 0 && (
