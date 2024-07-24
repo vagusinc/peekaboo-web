@@ -53,7 +53,9 @@ const DynamicInputFields: React.FC<DynamicInputFieldsProps> = ({
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       e.preventDefault();
-      handleAddClick();
+      if (values.length < maxCount) {
+        handleAddClick();
+      }
     }
   };
 

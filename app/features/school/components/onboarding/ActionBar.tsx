@@ -10,7 +10,7 @@ interface ActionBarProps {
 export const Footer: React.FC<ActionBarProps> = ({ onContinue, onBack, currentStep }) => {
 
   return (
-    <div className="flex justify-center h-1/5 w-svh">
+    <div className="flex justify-center h-32 w-svh">
       <div className="w-5/12 h-fit">
         <div className="div-flex-row h-full items-center justify-between py-5 px-10">
           <p className="text-sm">Cancel</p>
