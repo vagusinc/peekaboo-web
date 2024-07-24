@@ -34,7 +34,7 @@ export const OnboardingSlider: React.FC = () => {
 
   return (
     <div className="flex flex-col h-lvh">
-      <div className="flex-grow">
+      <div className="flex-grow overflow-hidden">
         {renderForm()}
       </div>
       <Footer

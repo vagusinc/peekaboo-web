@@ -7,6 +7,7 @@ interface DynamicInputFieldsProps {
   name: string;
   label: string;
   placeholder?: string;
+  maxCount?: number;
   value?: string[];
   type?: React.InputHTMLAttributes<HTMLInputElement>["type"];
   onChange: (values: string[]) => void;
@@ -17,6 +18,7 @@ const DynamicInputFields: React.FC<DynamicInputFieldsProps> = ({
   name,
   label,
   placeholder,
+  maxCount = 5,
   value = [""],
   type,
   onChange,
@@ -74,7 +76,7 @@ const DynamicInputFields: React.FC<DynamicInputFieldsProps> = ({
             ref={(el) => (inputRefs.current[index] = el)}
             type={type || "text"}
             name={`${name}[${index}]`}
-            placeholder={placeholder}
+            placeholder={placeholder || "Type something ..."}
             value={value}
             onChange={(e) => handleFieldChange(index, e.target.value)}
             onKeyUp={handleKeyPress}
@@ -87,9 +89,11 @@ const DynamicInputFields: React.FC<DynamicInputFieldsProps> = ({
           )}
         </div>
       ))}
-      <Button type="button" onClick={handleAddClick}>
-        Add {label}
-      </Button>
+      {(!maxCount || values.length < maxCount) && (
+        <Button type="button" onClick={handleAddClick}>
+          Add {label}
+        </Button>
+      )}
     </div>
   );
 };

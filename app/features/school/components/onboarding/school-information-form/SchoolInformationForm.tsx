@@ -18,14 +18,14 @@ export function SchoolInformationForm() {
   };
 
   return (
-    <div className="div-flex-col items-center h-full">
-      <div className="w-5/12 h-full">
+    <div className="div-flex-col items-center h-full w-full">
+      <div className="w-5/12 h-full space-y-32">
         <h1 className="text-5xl font-semibold m-5">
           Complete school information
         </h1>
 
-        <div className="h-5/6 centered-div">
-          <form className="div-flex-col h-fit w-full" onSubmit={handleSubmit}>
+        <div className="max-h-[80%]">
+          <form className="div-flex-col w-full" onSubmit={handleSubmit}>
             <form.Field
               name="schoolName"
               validators={{
@@ -137,6 +137,7 @@ export function SchoolInformationForm() {
                       placeholder={"enter contact number"}
                       classNameLabel="text-md"
                       type="number"
+                      maxCount={3}
                       value={field.state.value}
                       onChange={(values) => {
                         field.handleChange(values);
@@ -159,6 +160,7 @@ export function SchoolInformationForm() {
                       name={field.name}
                       label="Social media"
                       placeholder={"enter social media links"}
+                      maxCount={5}
                       classNameLabel="text-md"
                       value={field.state.value}
                       onChange={(values) => {
@@ -172,11 +174,6 @@ export function SchoolInformationForm() {
             </div>
           </form>
         </div>
-      </div>
-      <div className="div-flex-row">
-        {/** For testing purposes only **/}
-        <pre>{JSON.stringify(contactNumber, null, 2)}</pre>
-        <pre>{JSON.stringify(socialMediaLinks, null, 2)}</pre>
       </div>
     </div>
   );
