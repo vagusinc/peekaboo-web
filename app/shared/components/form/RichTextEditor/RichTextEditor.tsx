@@ -4,7 +4,7 @@ import { TextAlign } from '@tiptap/extension-text-align';
 import { Link } from '@tiptap/extension-link';
 import { Underline } from '@tiptap/extension-underline';
 import { Placeholder } from '@tiptap/extension-placeholder';
-import { RichTextEditorToolbar } from "./RichTextEditorToolbox"
+import { RichTextEditorToolbar } from "./RichTextEditorToolbox";
 
 interface RichTextEditorProps {
   classNameLabel?: string;
@@ -33,7 +33,11 @@ const RichTextEditor = ({
       TextAlign.configure({ types: ['heading', 'paragraph'] }),
       Link.configure({ openOnClick: true }),
       Underline,
-      Placeholder.configure({ placeholder }),
+      Placeholder.configure({
+        placeholder,
+        emptyEditorClass: "is-editor-empty",
+        showOnlyCurrent: true,
+      }),
     ],
     content: value,
     onUpdate: ({ editor }) => {
@@ -41,7 +45,19 @@ const RichTextEditor = ({
         onChange(editor.getHTML());
       }
     },
+    editorProps: {
+      attributes: {
+        class: "Prose",
+        "data-placeholder": placeholder || "Type something ...",
+      },
+    },
   });
+
+  const handleClick = () => {
+    if (editor) {
+      editor.chain().focus().run();
+    }
+  };
 
   return (
     <div className="flex flex-col gap-1.5">
@@ -51,11 +67,19 @@ const RichTextEditor = ({
           {label.includes('*') && <span className="text-red">*</span>}
         </label>
       )}
-      <div className={classNameInput || 'custom-input'}>
+      <div
+        className={classNameInput || "custom-input"}
+        onClick={handleClick}
+        tabIndex={0}
+        role="textbox"
+        onKeyDown={handleClick}
+      >
         {editor && (
           <>
             <RichTextEditorToolbar editor={editor} />
-            <EditorContent editor={editor} className="Prose p-2 min-h-[5rem] max-h-[8rem] cursor-text border rounded-md overflow-auto" />
+            <div className="p-2 min-h-[5rem] max-h-[8rem] cursor-text border rounded-md overflow-auto">
+              <EditorContent editor={editor} className="Prose" />
+            </div>
           </>
         )}
       </div>
