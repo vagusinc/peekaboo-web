@@ -4,9 +4,9 @@ import { zodValidator } from "@tanstack/zod-form-adapter";
 const defaultValues = {
   schoolName: "",
   schoolDescription: "",
-  contactNumber: "",
+  contactNumber: [""],
   emailAddress: "",
-  websiteLinks: [""],
+  websiteLinks: "",
   socialMediaLinks: [""],
 };
 

@@ -1,32 +1,48 @@
-import React from 'react';
-import { useDynamicInputFields } from './hooks/useDynamicInputFields';
-import { Button, Input } from '~/shared/components/base';
+import React, { useRef } from "react";
+import { useDynamicInputFields } from "./hooks/useDynamicInputFields";
+import { Button, Input } from "~/shared/components/base";
 
 interface DynamicInputFieldsProps {
+  classNameLabel?: string;
   name: string;
   label: string;
   placeholder?: string;
+  maxCount?: number;
   value?: string[];
+  type?: React.InputHTMLAttributes<HTMLInputElement>["type"];
   onChange: (values: string[]) => void;
 }
 
 const DynamicInputFields: React.FC<DynamicInputFieldsProps> = ({
+  classNameLabel,
   name,
   label,
   placeholder,
-  value = [''],
+  maxCount = 5,
+  value = [""],
+  type,
   onChange,
 }) => {
-  const { values, handleChange, handleAddField, handleRemoveField } = useDynamicInputFields(value);
+  const { values, handleChange, handleAddField, handleRemoveField } =
+    useDynamicInputFields(value);
+  const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
   const handleFieldChange = (index: number, newValue: string) => {
+    const updatedValues = [...values];
+    updatedValues[index] = newValue;
     handleChange(index, newValue);
-    onChange(values);
+    onChange(updatedValues);
   };
 
   const handleAddClick = () => {
     handleAddField();
     onChange(values);
+    setTimeout(() => {
+      const lastIndex = inputRefs.current.length - 1;
+      if (inputRefs.current[lastIndex]) {
+        inputRefs.current[lastIndex]?.focus();
+      }
+    }, 0);
   };
 
   const handleRemoveClick = (index: number) => {
@@ -34,17 +50,38 @@ const DynamicInputFields: React.FC<DynamicInputFieldsProps> = ({
     onChange(values);
   };
 
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      if (values.length < maxCount) {
+        handleAddClick();
+      }
+    }
+  };
+
   return (
     <div className="flex flex-col gap-3">
-      <label className="text-md">{label}</label>
+      <label
+        htmlFor={name}
+        className={classNameLabel || "font-semibold text-xl text-black"}
+      >
+        {label && (
+          <>
+            {label.split("*")[0]}
+            {label.includes("*") && <span className="text-red">*</span>}
+          </>
+        )}
+      </label>
       {values.map((value, index) => (
         <div key={index} className="flex items-center gap-2">
           <Input
-            type="text"
+            ref={(el) => (inputRefs.current[index] = el)}
+            type={type || "text"}
             name={`${name}[${index}]`}
-            placeholder={placeholder}
+            placeholder={placeholder || "Type something ..."}
             value={value}
             onChange={(e) => handleFieldChange(index, e.target.value)}
+            onKeyUp={handleKeyPress}
             className="custom-input"
           />
           {index > 0 && (
@@ -54,9 +91,11 @@ const DynamicInputFields: React.FC<DynamicInputFieldsProps> = ({
           )}
         </div>
       ))}
-      <Button type="button" onClick={handleAddClick}>
-        Add {label}
-      </Button>
+      {(!maxCount || values.length < maxCount) && (
+        <Button type="button" onClick={handleAddClick}>
+          Add {label}
+        </Button>
+      )}
     </div>
   );
 };
