@@ -1,1 +1,1 @@
-export * from "./OnboardingForm";
+export * from './OnboardingSlider';
