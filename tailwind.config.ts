@@ -17,6 +17,10 @@ const config = {
       },
     },
     extend: {
+      boxShadow: {
+        "custom-all":
+          "0 10px 15px rgba(0, 0, 0, 0.02), 0 -10px 15px rgba(0, 0, 0, 0.02), 10px 0 15px rgba(0, 0, 0, 0.02), -10px 0 15px rgba(0, 0, 0, 0.02)",
+      },
       fontFamily: {
         poppins: "Poppins",
       },

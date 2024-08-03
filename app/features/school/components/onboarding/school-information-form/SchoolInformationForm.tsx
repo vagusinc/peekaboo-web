@@ -136,7 +136,7 @@ export function SchoolInformationForm() {
                   <div className="div-flex-col w-6/12">
                     <DynamicInputFields
                       name={field.name}
-                      label="Contact number"
+                      label="Contact number*"
                       placeholder={"enter contact number"}
                       classNameLabel="text-md"
                       type="number"

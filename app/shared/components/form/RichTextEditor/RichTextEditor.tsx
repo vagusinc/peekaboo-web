@@ -15,6 +15,7 @@ interface RichTextEditorProps {
   placeholder?: string;
   errorMessage?: string;
   onChange?: (value: string) => void;
+  fullHeight?: boolean;
 }
 
 const RichTextEditor = ({
@@ -25,6 +26,7 @@ const RichTextEditor = ({
   label,
   placeholder,
   onChange,
+  fullHeight = false,
 }: RichTextEditorProps) => {
 
   const editor = useEditor({
@@ -77,7 +79,7 @@ const RichTextEditor = ({
         {editor && (
           <>
             <RichTextEditorToolbar editor={editor} />
-            <div className="p-2 min-h-[5rem] max-h-[8rem] cursor-text border rounded-md overflow-auto">
+            <div className={`p-2 min-h-[5rem] ${fullHeight ? 'max-h-full' : 'max-h-[8rem]'} cursor-text border rounded-md overflow-auto`}>
               <EditorContent editor={editor} className="Prose" />
             </div>
           </>
